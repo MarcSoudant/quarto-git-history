@@ -27,9 +27,8 @@ git tag 0.0.1-alpha
 
 We can only recommend that you comply with the version naming according to [semantic versioning](https://semver.org/).
 
-:::{.callout-note}
-By default `git push` does not push tags to the remote git(s), to do so you can use `git push <remote> <tag_name>`.
-:::
+>[!NOTE]
+>By default `git push` does not push tags to the remote git(s), to do so you can use `git push <remote> <tag_name>`.
 
 ### Shortcode to use
 
