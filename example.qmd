@@ -1,8 +1,8 @@
 ---
-title: "Rev-history Example"
+title: "git-history Example"
 ---
 
 ## Heading
 
-{{< rev-history >}}
+{{< git-history >}}
 

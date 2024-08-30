@@ -1,0 +1,8 @@
+title: git-history
+author: Simon Mutch, Marc Soudant
+version: 0.2.0
+quarto-required: ">=1.2.0"
+contributes:
+  shortcodes:
+    - git-history.lua
+
