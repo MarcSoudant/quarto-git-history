@@ -2,9 +2,8 @@
 
 Generates a simple revision history table with content pulled from git tags with a quarto shortcode.
 
-:::{.callout-tip}
-This quarto shortcode extension is greatly inspired by [smutch/quarto-rev-history](https://github.com/smutch/quarto-rev-history).
-:::
+>[!TIP]
+>This quarto shortcode extension is greatly inspired by [smutch/quarto-rev-history](https://github.com/smutch/quarto-rev-history).
 
 ## Installing
 
@@ -48,13 +47,11 @@ After rendering, a markdown table will be inserted with :
 * author of the last commit associated the tag 
 * all the first-line descriptions (called *subjects*) of the corresponding git commits since last tag.
 
-:::{.callout-warning}
-All this informations are based on th local git tags are used.
-:::
+>[!WARNING]
+>All this informations are based on th local git tags are used.
 
-:::{.callout-note}
-Commits with first started with "auto:" will not be printed.
-:::
+>[!NOTE]
+>Commits with first started with "auto:" will not be printed.
 
 ## Example
 
