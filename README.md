@@ -28,7 +28,7 @@ git tag 0.0.1-alpha
 We can only recommend that you comply with the version naming according to [semantic versioning](https://semver.org/).
 
 >[!NOTE]
->By default `git push` does not push tags to the remote git(s), to do so you can use `git push <remote> <tag_name>`.
+>By default `git push` does not push tags to the remote git(s), to do so you can use `git push <remote> <tag_name>` or see `git config` parameter `push.followTags`.
 
 ### Shortcode to use
 
@@ -42,15 +42,14 @@ Just insert this command line in your quarto document :
 
 After rendering, a markdown table will be inserted with :
 * tag name
-* date of the last commit associated the tag a
-* author of the last commit associated the tag 
+* date of the tag
 * all the first-line descriptions (called *subjects*) of the corresponding git commits since last tag.
 
 >[!WARNING]
->All this informations are based on th local git tags are used.
+>All these informations are based on the local git.
 
 >[!NOTE]
->Commits with first started with "auto:" will not be printed.
+>Commits with started with "auto:" will not be printed.
 
 ## Example
 
@@ -58,8 +57,9 @@ Here is the source code for a minimal example: [example.qmd](example.qmd).
 
 Example of result :
 
-| version | date | author | description |
-|:--------|:-----|:-------|:------------|
-| 0.1.0 | 2022-12-13 | Simon Mutch | - Initial commit<br>- Working version<br>- :tv: Bump version|
-| 0.2.0 | 2024-08-30 | Mars Soudant | -refactor: rev-history -> git-history |
-
+| version | date | description |
+|:----|:-------|:------------------------------------|
+| 0.1.0 | 2022-12-13 | - Initial commit<br>- Working version<br>- :tv: Bump version|
+| 0.2.0 | 2024-08-30 | -refactor: rev-history -> git-history |
+| 0.2.1 | 2024-08-30 | -Fix: Update callout in README.md<br>-Fix: Update callout in README.md |
+| 0.2.2 | 2025-01-14 | -fix: add vscode files to gitignore<br>-refactor(git-history.lua): delete author + Description column wider + use creatordate instead of comitterdate<br>-Fix: Update README.md |
