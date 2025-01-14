@@ -20,8 +20,8 @@ return {
         -- local short = pandoc.utils.stringify(kwargs["short"])
         -- if short == "true" then cmdArgs = cmdArgs .. "--short " end
 
-        local header =  "| version | date | author | description |\n"
-        local divider = "|:--------|:-----|:-------|:------------|\n"
+        local header =  "| version | date | description |\n"
+        local divider = "|:----|:-------|:------------------------------------|\n"
 
         -- tried this command but didn't give satisfaction
         -- git for-each-ref "*[0-9].[0-9]" --sort=committerdate --shell 
@@ -38,12 +38,12 @@ return {
         local description = ''
 
         -- loop along tags
-        local tagslist = io.popen('git tag -l "*[0-9].[0-9]" --sort=committerdate')
+        local tagslist = io.popen('git tag -l "*[0-9].[0-9]" --sort=creatordate')
         local prevtag = nil
         if tagslist ~= nil then
             for tag in tagslist:lines() do
                 -- get the commit info linked to the tag
-                description = description .. git('tag -l ' .. tag .. ' --format="| **%(refname:short)** | *%(committerdate:short)* | %(authorname) | ', '*l')
+                description = description .. git('tag -l ' .. tag .. ' --format="| **%(refname:short)** | *%(creatordate:short)* | ', '*l')
                 -- previous tag ?
                 if prevtag ~= nil then
                     prevtag = prevtag .. '..'
