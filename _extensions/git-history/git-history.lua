@@ -20,6 +20,10 @@ return {
         -- local short = pandoc.utils.stringify(kwargs["short"])
         -- if short == "true" then cmdArgs = cmdArgs .. "--short " end
 
+        local exclude = pandoc.utils.stringify(kwargs["exclude"])
+        if exclude == '' then exclude = 'auto' end
+        cmdExclude = ' --invert-grep --extended-regexp --regexp-ignore-case --grep="^(' .. exclude .. ').*:" '
+
         local header =  "| version | date | description |\n"
         local divider = "|:----|:-------|:------------------------------------|\n"
 
@@ -51,7 +55,7 @@ return {
                     prevtag = ''
                 end
                 -- loop along commmits between current tag and previous
-                local commits = io.popen('git log ' .. prevtag .. tag .. ' --reverse --no-merges --invert-grep --grep="^auto:.*" --pretty=format:"- %s"')
+                local commits = io.popen('git log ' .. prevtag .. tag .. cmdExclude .. ' --reverse --no-merges --pretty=format:"- %s"')
                 if commits ~= nil then
                     for commit in commits:lines() do
                         description = description .. commit .. "<br>"

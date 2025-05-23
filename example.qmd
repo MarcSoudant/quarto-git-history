@@ -4,5 +4,5 @@ title: "git-history Example"
 
 ## Heading
 
-{{< git-history >}}
+{{< git-history exclude=fix|refactor >}}
 

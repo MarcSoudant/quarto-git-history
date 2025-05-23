@@ -49,7 +49,7 @@ After rendering, a markdown table will be inserted with :
 >All these informations are based on the local git.
 
 >[!NOTE]
->Commits with started with "auto:" will not be printed.
+>By default commits starting with "auto:" will not be printed (see "exclude parameter" section for other options)
 
 ## Example
 
@@ -63,3 +63,38 @@ Example of result :
 | 0.2.0 | 2024-08-30 | -refactor: rev-history -> git-history |
 | 0.2.1 | 2024-08-30 | -Fix: Update callout in README.md<br>-Fix: Update callout in README.md |
 | 0.2.2 | 2025-01-14 | -fix: add vscode files to gitignore<br>-refactor(git-history.lua): delete author + Description column wider + use creatordate instead of comitterdate<br>-Fix: Update README.md |
+
+
+## `exclude` parameter
+
+*New 0.3 feature*
+
+`exclude` parameter change commit filter.
+
+By default commits starting with "auto:" will not be printed. But if you want to exclude an other starting syntax use  `exclude` named parameter.
+
+
+Example :
+
+```md
+{{ < git-history exclude=fix > }}
+```
+
+will exclude commits starting with **fix:**.
+
+>[!NOTE]
+>`exclude` parameter is not case dependant. Si *Fix*, *FIX*, ... will also be ignored in previous example.
+
+
+
+`exclude` parameter is a regular expression :
+
+```md
+{{ < git-history exclude=fix|refactor > }}
+```
+
+will exclude commits starting with **fix:** or **refactor:**.
+
+
+>[!NOTE]
+>Quoting `exclude` parameter works too. So `{{ < git-history exclude="fix|refactor" > }}` works the same way.
